@@ -14,13 +14,6 @@ def open_connection():
     return connection
 
 
-@app.teardown_appcontext
-def close_connection(exception):
-    connection = getattr(g, '_connection', None)
-    if connection is not None:
-        connection.close()
-
-
 def execute_sql(sql, values=(), commit=False, single=False):
     connection = open_connection()
     cursor = connection.execute(sql, values)
@@ -31,6 +24,11 @@ def execute_sql(sql, values=(), commit=False, single=False):
     cursor.close()
     return results
 
+@app.teardown_appcontext
+def close_connection(exception):
+    connection = getattr(g, '_connection', None)
+    if connection is not None:
+        connection.close()
 
 @app.route('/')
 @app.route('/jobs')
