@@ -1,5 +1,5 @@
 from flask import Flask, render_template, g, request, redirect, url_for
-import datetime as dt
+import datetime
 import sqlite3
 
 PATH = 'db/jobs.sqlite'
@@ -63,7 +63,7 @@ def review(employer_id):
         title = request.form['title']
         rating = request.form['rating']
         status = request.form['status']
-        date = dt.datetime.now().strftime("%m/%d/%Y")
+        date = datetime.datetime.now().strftime("%m/%d/%Y")
         execute_sql('INSERT INTO review (review, rating, title, date, status, employer_id) VALUES (?, ?, ?, ?, ?, ?)',
                     commit=True,
                     values=(review, rating, title, date, status, employer_id))
