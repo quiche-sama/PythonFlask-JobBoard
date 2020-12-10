@@ -215,23 +215,23 @@ In the function body:
 
 ## 4.2 - Show Job Macro Definition
 
-@pytest.mark.show_job_macro_definition In `_macros.html` create a template macro, using the `macro` tag, called `show_job`. `show_job` should take one parameter called `job`. Don't forgot to end the macro.
+@pytest.mark.show_job_macro_definition In `_macros.html` create a template macro, using the `macro` tag, called `job`. `job` should take one parameter called `job`. Don't forgot to end the macro.
 
 ## 4.3 - Show Job Macro HTML
 
 @pytest.mark.show_job_macro_html Locate the `template.html` file in the root of the project. Open it and find the code labeled 
-`<!-- show_job -->`. Copy the code to the body of the `show_job` macro in `_macros.html`.
+`<!-- job -->`. Copy the code to the body of the `job` macro in `_macros.html`.
 
 ## 4.4 - Show Job Macro Header
 
-@pytest.mark.show_job_macro_header Still in the body of  the `show_job` macro in `_macros.html` find the `<p>` tag with a class of `card_header_title`.
+@pytest.mark.show_job_macro_header Still in the body of  the `job` macro in `_macros.html` find the `<p>` tag with a class of `card_header_title`.
 
 - Add an `<a>` tag with an `href` of `{{ url_for('job', job_id=job['id']) }}`. 
 - The content should be `{{ job['title'] }}`. 
 
 ## 4.5 - Show Job Macro Body
 
-@pytest.mark.show_job_macro_body Next find the `<div>` with a class of `content` in the `show_job` macro and add a `<p>` tag. 
+@pytest.mark.show_job_macro_body Next find the `<div>` with a class of `content` in the `job` macro and add a `<p>` tag. 
 In `<p>` tag add the following:
 
 - `<a>` tag with an `href` of `{{ url_for('employer', employer_id=job['employer_id']) }}`. The content should be `{{ job['employer_name'] }}`. 
@@ -255,14 +255,14 @@ In `<p>` tag add the following:
 
 @pytest.mark.show_jobs_macro_for_loop_body In the body of the `for` loop add a `<div>` with two classes `column` and `is_half`.
 
-- In this `column` `<div>` add a call to the `show_job` macro passing in an individual `job` from the `for` loop.
+- In this `column` `<div>` add a call to the `job` macro passing in an individual `job` from the `for` loop.
 
 ## 4.9 - Import Macros
 
-@pytest.mark.import_macros In `templates/layout.html` import the `show_job`, and `show_jobs` macros using the following code:
+@pytest.mark.import_macros In `templates/layout.html` import the `job`, and `show_jobs` macros using the following code:
 
 ```
-{% from '_macros.html' import show_job, show_jobs with context %}
+{% from '_macros.html' import job, show_jobs with context %}
 ```
 
 **Notes: Because each template extends `layout.html` all of them will have access to these two new macros.**
@@ -303,7 +303,7 @@ At this point you can see all jobs on the homepage:
 
 In the file use an `extends` template tag to inherit `layout.html`. 
 
-After the `extends` tag add a template `block` called `content`. In the block call the `show_job` macro passing in `job`. **Note: Use the `{{}}` for the macro call.**
+After the `extends` tag add a template `block` called `content`. In the block call the `job` macro passing in `job`. **Note: Use the `{{}}` for the macro call.**
 
 ## 5.2 - Job Route Function
 
